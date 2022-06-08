@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-Agenda-</title>
+</head>
+
+<body>
+
+    <script>
+        var agenda = new Array() //Lista array
+
+
+        // Adicionar contato (função)
+        function gravar(nome,numero){
+            agenda.push([nome,numero])
+            return agenda
+        }
+
+        // Listar contato (função)
+        function listar(array){
+            let contatos = ""
+
+            for(let i = 0; i < array.length; i++){
+                contatos += (`Nome: ${array[i][0]} | Número: ${array[i][1]}\n`)
+            }
+
+            return window.alert(String(contatos))
+        }
+
+        // Buscar contato (função)
+        function buscar(nome,array){
+            for (let i = 0; i < array.length; i++){
+                if (nome == array[i][0]){
+                    return window.alert(String(`Nome: ${array[i][0]} \nNúmero: ${array[i][1]} \n`))
+
+                }else{
+                    return window.alert("Número inexistente")
+                    
+                }
+            }
+        }
+
+        // Excluir contato (função)
+        function excluir(numero,array){
+            for (let i = 0; i < array.length; i++){
+                if (numero == array[i][1]){
+                    array.splice(i,i+1)
+                    return window.alert("Contato removido com sucesso")
+
+                }else{
+                    return window.alert("Número inexistente")
+                    
+                }
+            }
+        }
+
+        do{
+            var escolha = prompt("Escolha uma opção: \n1 - Gravar contato \n2 - Listar contato \n3 - Buscar contato \n4 - Excluir contato \n")
+
+            if (escolha == "1"){ // Adicionar contato
+                let nome = prompt("Informe o nome: ")
+                let numero = prompt("Informe o número: ")
+
+                var contato = gravar(nome,numero)
+
+            } else if (escolha == "2"){ // Listar contatos
+                listar(contato)
+
+            } else if (escolha == "3"){ // Buscar contato
+                let pessoa = prompt("Informe o nome desejado: ")
+
+                buscar(pessoa,agenda)
+
+            } else if (escolha == "4"){ // Excluir contato
+                let numero = prompt("Informe o número para remoção: ")
+
+                excluir(numero,agenda)
+
+            }
+
+        } while(confirm("Ir para o menu? ") ? true : false)
+
+    </script>   
+</body>
+</html>
